@@ -9,11 +9,15 @@ pipeline {
     stage('Testing') {
       steps {
         sh 'sleep 5'
+        sh 'echo Tests Completed!'
       }
     }
-    stage('') {
+    stage('Publish Event') {
       steps {
-        sh 'echo Tests Completed!'
+        script {
+          publishEvent simpleEvent('testingCompleted')
+        }
+
       }
     }
   }
